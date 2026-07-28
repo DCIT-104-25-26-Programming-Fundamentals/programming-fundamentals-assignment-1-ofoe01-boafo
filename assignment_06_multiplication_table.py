@@ -55,3 +55,47 @@
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
 # =============================================================================
 
+
+#                    SOLUTION
+def print_single_multiplication_table(number):
+    print(f"Multiplication Table for {number}:")
+    for i in range(1, 13):
+        result = number * i
+        print(f"{number} x {i} = {result}")
+
+def print_all_multiplication_tables(n):
+    for num in range(1, n + 1):
+        print_single_multiplication_table(num)
+        if num < n:
+            print("-----------")
+
+def main():
+    # Part A: Single Table
+    while True:
+        try:
+            num_str = input("Enter a number to display its multiplication table: ")
+            number_to_display = int(num_str)
+            break
+        except ValueError:
+            print("Invalid input. Please enter a whole number.")
+            
+    print_single_multiplication_table(number_to_display)
+    
+    print("\n" + "="*30 + "\n")
+
+    # Part B: Tables from 1 to N
+    while True:
+        try:
+            n_str = input("Enter a number N to display multiplication tables from 1 to N: ")
+            n_limit = int(n_str)
+            if n_limit > 0:
+                break
+            else:
+                print("Please enter a positive integer for N.")
+        except ValueError:
+            print("Invalid input. Please enter a whole number.")
+
+    print_all_multiplication_tables(n_limit)
+
+if __name__ == "__main__":
+    main()

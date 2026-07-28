@@ -79,3 +79,67 @@
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
 # =============================================================================
 
+
+#                    SOLUTION
+def main():
+    tasks = []
+
+    while True:
+        print("\n-- TO-DO LIST MENU --")
+        print("1. Add a Task")
+        print("2. View All Tasks")
+        print("3. Delete a Task")
+        print("4. Quit")
+
+        choice = input("\nEnter your choice (1-4): ").strip()
+
+        # 1. Add a Task
+        if choice == "1":
+            task_description = input("Enter task description: ").strip()
+            if task_description:
+                tasks.append(task_description)
+                print(f"Task '{task_description}' successfully added!")
+            else:
+                print("Task description cannot be empty.")
+
+        # 2. View All Tasks
+        elif choice == "2":
+            if not tasks:
+                print("Your to-do list is currently empty.")
+            else:
+                print("\nYour Current Tasks:")
+                for index, task in enumerate(tasks, start=1):
+                    print(f"{index}. {task}")
+
+        # 3. Delete a Task
+        elif choice == "3":
+            if not tasks:
+                print("Your to-do list is empty. Lucky you!.")
+            else:
+                print("\nYour Current Tasks:")
+                for index, task in enumerate(tasks, start=1):
+                    print(f"{index}. {task}")
+
+                try:
+                    task_num = int(
+                        input("\nEnter the task number to delete: ")
+                    )
+                    if 1 <= task_num <= len(tasks):
+                        removed_task = tasks.pop(task_num - 1)
+                        print(f"The task '{removed_task}' has been deleted successfully.")
+                    else:
+                        print("Error: Invalid task number.")
+                except ValueError:
+                    print("Error: Please enter a valid numerical index.")
+
+        # 4. Quit
+        elif choice == "4":
+            print("Thank you for using the To-Do List app. See ya next time!")
+            break
+
+        else:
+            print("Invalid selection. Please choose a number between 1 and 4.")
+
+
+if __name__ == "__main__":
+    main()
